@@ -1,0 +1,21 @@
+<div class="mt-4 search-form">
+    <form method="POST" action=""> 
+    {{!-- method: chọn phương thức mặc đinh là GET , action: hành động submit ở đâu --}}
+        <div class="form-group">
+            <label for="search-input">Email address</label>
+            <input type="text" name="q" class="form-control" id="search-input" placeholder="Nhập từ khoá...">
+            {{!-- input có name là q --}}
+        </div>
+        <div class="form-group">
+            <label for="gender-input">Gender</label>
+            <select name="gender" class="form-control" id="gender-input">
+                <option value="" hidden>--Chọn giới tính</option>
+                <option value="male">Nam</option>
+                <option value="female">Nữ</option>
+            </select>   
+            {{!-- input có name là q --}}
+        </div>
+        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        {{!-- Nút button loại submit --}}
+    </form>
+</div>
