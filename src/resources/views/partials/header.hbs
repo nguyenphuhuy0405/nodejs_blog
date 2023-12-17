@@ -7,9 +7,18 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
+        {{{handleLogin this.user this.token}}}
+
+        {{!-- <li class="nav-item">
+          <a class="nav-link" href="/auth/login-page">Đăng nhập</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/register-page">Đăng ký</a>
+        </li> --}}
+
+        {{!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-            <img class="user-avatar" src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/134350477_2489792431313320_5722535323206280313_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ISs3zKyAHO4AX-IPg_v&_nc_ht=scontent.fsgn2-6.fna&oh=00_AfCdpf0wcUsqIt_sm9JIq7K7mgcjyBW-Db2ult1lGGLS8g&oe=64DA167E" alt="" cla>
+            <img class="user-avatar" src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/134350477_2489792431313320_5722535323206280313_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ISs3zKyAHO4AX-IPg_v&_nc_ht=scontent.fsgn2-6.fna&oh=00_AfCdpf0wcUsqIt_sm9JIq7K7mgcjyBW-Db2ult1lGGLS8g&oe=64DA167E" alt="">
             Nguyễn Phú Huy
           </a>
           <div class="dropdown-menu">
@@ -20,7 +29,8 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Đăng xuất</a>
           </div>
-        </li>
+        </li> --}}
+
       </ul>
     </div>
   </div>

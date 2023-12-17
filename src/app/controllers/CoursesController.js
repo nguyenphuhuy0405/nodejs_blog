@@ -1,9 +1,9 @@
 const Course = require('../models/Course')
 class CoursesController {
     // [GET] /courses/:slug
-    show(req, res, next) {
+    async show(req, res, next) {
         // res.send('Course Detail:' + req.params.slug)
-        Course.findOne({ slug: req.params.slug })
+        await Course.findOne({ slug: req.params.slug })
             .lean()
             .then((courses) => res.render('courses/show', { courses }))
             .catch((err) => next(err))
@@ -26,8 +26,8 @@ class CoursesController {
     }
 
     // [GET] /courses/:id/edit
-    edit(req, res, next) {
-        Course.findById(req.params.id)
+    async edit(req, res, next) {
+        await Course.findById(req.params.id)
             .lean()
             .then((courses) => res.render('courses/edit', { courses }))
             .catch((err) => next(err))
@@ -65,6 +65,19 @@ class CoursesController {
         await Course.deleteOne({ _id: req.params.id })
             .then(() => res.redirect('back'))
             .catch((err) => next(err))
+    }
+
+    // [POST] /courses/handle-form-actions
+    async handleFormActions(req, res, next) {
+        switch (req.body.action) {
+            case 'delete':
+                await Course.delete({ _id: { $in: req.body.courseIds } })
+                    .then(() => res.redirect('back'))
+                    .catch((err) => next(err))
+                break
+            default:
+                res.json({ message: 'Action not found' })
+        }
     }
 }
 

@@ -2,8 +2,15 @@ const Course = require('../models/Course')
 class MeController {
     // [GET] /me/stored/courses
     storedCourses(req, res, next) {
+        let courseFind = Course.find({}).lean()
+        if (req.query.hasOwnProperty('_sort')) {
+            courseFind = courseFind.sort({
+                [req.query.column]: req.query.type,
+            })
+        }
+
         Promise.all([
-            Course.find({}).lean(),
+            courseFind,
             Course.countDocumentsWithDeleted({ deleted: true }).lean(),
         ])
             .then(([courses, deletedCount]) =>
@@ -12,7 +19,7 @@ class MeController {
                     deletedCount,
                 }),
             )
-            .catch(next)
+            .catch((err) => next(err))
     }
     trashCourses(req, res, next) {
         Course.findWithDeleted({ deleted: true })
